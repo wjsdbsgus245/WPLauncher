@@ -13,6 +13,7 @@ namespace WPLauncher
 {
     public partial class Form1 : Form
     {
+        Point LastMousePos;
         public Form1()
         {
             InitializeComponent();
@@ -105,5 +106,31 @@ namespace WPLauncher
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            
+        }
+
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DesktopLocation = new Point(DesktopLocation.X + Cursor.Position.X - LastMousePos.X, DesktopLocation.Y + Cursor.Position.Y - LastMousePos.Y);
+            }
+
+            LastMousePos = Cursor.Position;
+        }
+
+
+        
+        
     }
 }
