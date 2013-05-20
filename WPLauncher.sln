@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPLauncher", "WPLauncher\WPLauncher.csproj", "{61BDBA46-53AD-48EB-8176-500B65B32AD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61BDBA46-53AD-48EB-8176-500B65B32AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BDBA46-53AD-48EB-8176-500B65B32AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BDBA46-53AD-48EB-8176-500B65B32AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BDBA46-53AD-48EB-8176-500B65B32AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
