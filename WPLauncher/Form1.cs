@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using ICSharpCode.SharpZipLib.Zip;
 using System.IO;
 
+using System.Net;
+
 namespace WPLauncher
 {
     public partial class Form1 : Form
@@ -128,6 +130,27 @@ namespace WPLauncher
 
             LastMousePos = Cursor.Position;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+            if(File.Exists("Klient.7z"))
+            {
+                File.Delete("Klient.7z");
+            }
+
+            WebClient client = new WebClient();
+            
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+            Uri remoteFile = new Uri("https://dl.dropboxusercontent.com/s/7y51nd0pcits718/Warpack%202.0%20pre2%20Klient.7z");
+            client.DownloadFileAsync(remoteFile, "Klient.7z");
+        }
+
+        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progressBar1.Value = (int)(((float)e.BytesReceived / 60000000.0f) * 100);
+        }
+
 
 
         
