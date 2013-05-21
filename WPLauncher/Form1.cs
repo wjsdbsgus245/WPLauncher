@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Core;
 using System.IO;
 
 using System.Net;
@@ -61,29 +62,29 @@ namespace WPLauncher
                     { };
 
                     FileInfo[] files = null;
-                    DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\do minecraft.jar\");
+                    DirectoryInfo di = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\Klient\do minecraft.jar\");
                     string searchPattern = "*.*";
                     files = di.GetFiles(searchPattern, SearchOption.AllDirectories);
                     foreach (FileInfo f in files)
                     {
-                        zFile.Add(f.FullName, f.FullName.Replace(Directory.GetCurrentDirectory() + @"\do minecraft.jar\", ""));
+                        zFile.Add(f.FullName, f.FullName.Replace(Directory.GetCurrentDirectory() + @"\Klient\do minecraft.jar\", ""));
                     }
                     zFile.CommitUpdate();
                     zFile.Close();
 
 
                     //Now Create all of the directories
-                    foreach (string dirPath in Directory.GetDirectories(Directory.GetCurrentDirectory() + @"\do .minecraft\", "*", SearchOption.AllDirectories))
-                        Directory.CreateDirectory(dirPath.Replace(Directory.GetCurrentDirectory() + @"\do .minecraft\", textBox1.Text + @"\" ));
+                    foreach (string dirPath in Directory.GetDirectories(Directory.GetCurrentDirectory() + @"\Klient\do .minecraft\", "*", SearchOption.AllDirectories))
+                        Directory.CreateDirectory(dirPath.Replace(Directory.GetCurrentDirectory() + @"\Klient\do .minecraft\", textBox1.Text + @"\" ));
 
                     
-                    di = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\do .minecraft\");
+                    di = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\Klient\do .minecraft\");
                     files = di.GetFiles(searchPattern, SearchOption.AllDirectories);
                     
                     foreach (FileInfo f in files)
                     {
                         
-                        File.Copy(f.FullName, textBox1.Text + f.FullName.Replace(Directory.GetCurrentDirectory() + @"\do .minecraft", ""), true);
+                        File.Copy(f.FullName, textBox1.Text + f.FullName.Replace(Directory.GetCurrentDirectory() + @"\Klient\do .minecraft", ""), true);
                     }
                 }
                 MessageBox.Show("Zrobione!");
@@ -139,21 +140,31 @@ namespace WPLauncher
                 File.Delete("Klient.7z");
             }
 
+            progressBar1.Visible = true;
+
             WebClient client = new WebClient();
             
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
             Uri remoteFile = new Uri("https://dl.dropboxusercontent.com/s/7y51nd0pcits718/Warpack%202.0%20pre2%20Klient.7z");
             client.DownloadFileAsync(remoteFile, "Klient.7z");
+
         }
 
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = (int)(((float)e.BytesReceived / 60000000.0f) * 100);
+            if (e.BytesReceived == e.TotalBytesToReceive)
+            {
+                progressBar1.Visible = false;
+                UnZip("Klient.zip");
+            }
         }
 
+        public static void UnZip(string SrcFile)
+        {
+            FastZip FZ = new FastZip();
+            FZ.ExtractZip(SrcFile, "Klient", null);
+        }
 
-
-        
-        
     }
 }
