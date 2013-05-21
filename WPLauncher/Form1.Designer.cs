@@ -41,12 +41,14 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelLoginName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonLaunch = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -173,6 +175,17 @@
             this.panel1.TabIndex = 10;
             this.panel1.Visible = false;
             // 
+            // labelLoginName
+            // 
+            this.labelLoginName.AutoSize = true;
+            this.labelLoginName.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLoginName.Location = new System.Drawing.Point(20, 30);
+            this.labelLoginName.Name = "labelLoginName";
+            this.labelLoginName.Size = new System.Drawing.Size(83, 33);
+            this.labelLoginName.TabIndex = 1;
+            this.labelLoginName.Text = "None";
+            this.labelLoginName.Visible = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -182,17 +195,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Zalogowany jako";
             this.label1.Visible = false;
-            // 
-            // labelLoginName
-            // 
-            this.labelLoginName.AutoSize = true;
-            this.labelLoginName.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelLoginName.Location = new System.Drawing.Point(3, 27);
-            this.labelLoginName.Name = "labelLoginName";
-            this.labelLoginName.Size = new System.Drawing.Size(83, 33);
-            this.labelLoginName.TabIndex = 1;
-            this.labelLoginName.Text = "None";
-            this.labelLoginName.Visible = false;
             // 
             // buttonLogin
             // 
@@ -229,6 +231,16 @@
             this.buttonLaunch.Text = "Launch MC";
             this.buttonLaunch.UseVisualStyleBackColor = true;
             this.buttonLaunch.Click += new System.EventHandler(this.buttonLaunch_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -288,6 +300,8 @@
         private System.Windows.Forms.Label labelLoginName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonLaunch;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }
 

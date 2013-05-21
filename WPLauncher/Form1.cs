@@ -17,7 +17,6 @@ namespace WPLauncher
 {
     public partial class Form1 : Form
     {
-        string[] MCSessionID;
         Point LastMousePos;
         public Form1()
         {
@@ -170,18 +169,52 @@ namespace WPLauncher
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            MCSessionID = Login.generateSession(textBoxLogin.Text, textBoxPassword.Text, 13).Split(':');
+            backgroundWorker1.RunWorkerAsync();
+            //Login.generateSession(textBoxLogin.Text, textBoxPassword.Text, 13);
+            //labelLoginName.Text = Login.Session[2];
+            
         }
 
         private void buttonLaunch_Click(object sender, EventArgs e)
         {
             try
             {
-                Login.startMinecraft(true, 256, 1024, MCSessionID[2], MCSessionID[3], false, textBox1.Text);
+                Login.startMinecraft(true, 256, 1024, Login.Session[2], Login.Session[3], false, textBox1.Text);
             }
             catch
             {
             }
+        }
+
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Login.generateSession(textBoxLogin.Text, textBoxPassword.Text, 13);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            labelLoginName.Visible = true;
+            buttonLogin.Visible = false;
+            textBoxLogin.Visible = false;
+            textBoxPassword.Visible = false;
+            panel1.Visible = true;
+            backgroundWorker2.RunWorkerAsync();
+
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while(Login.Session == null)
+            {
+                
+            }
+        }
+
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            labelLoginName.Text = Login.Session[2];
         }
 
     }
