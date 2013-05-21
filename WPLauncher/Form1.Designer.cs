@@ -39,8 +39,17 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelLoginName = new System.Windows.Forms.Label();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.buttonLaunch = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -69,7 +78,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(12, 418);
+            this.textBox1.Location = new System.Drawing.Point(12, 429);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(467, 35);
             this.textBox1.TabIndex = 1;
@@ -99,19 +108,19 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(12, 41);
+            this.webBrowser1.Location = new System.Drawing.Point(183, 115);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(897, 344);
+            this.webBrowser1.Size = new System.Drawing.Size(457, 270);
             this.webBrowser1.TabIndex = 3;
-            this.webBrowser1.Url = new System.Uri("http://warpack.pl/launcher/news/index.php?q=main", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://warpack.pl", System.UriKind.Absolute);
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(869, 1);
+            this.button3.Location = new System.Drawing.Point(858, 1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(51, 48);
+            this.button3.Size = new System.Drawing.Size(51, 36);
             this.button3.TabIndex = 5;
             this.button3.Text = "Zamknij";
             this.button3.UseVisualStyleBackColor = true;
@@ -119,9 +128,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(813, 4);
+            this.button4.Location = new System.Drawing.Point(802, 1);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 48);
+            this.button4.Size = new System.Drawing.Size(50, 36);
             this.button4.TabIndex = 6;
             this.button4.Text = "Zminimalizuj";
             this.button4.UseVisualStyleBackColor = true;
@@ -129,9 +138,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(178, 141);
+            this.button5.Location = new System.Drawing.Point(12, 43);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 62);
+            this.button5.Size = new System.Drawing.Size(287, 66);
             this.button5.TabIndex = 7;
             this.button5.Text = "Ściągnij apczkę";
             this.button5.UseVisualStyleBackColor = true;
@@ -141,9 +150,85 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 391);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(467, 23);
+            this.progressBar1.Size = new System.Drawing.Size(467, 32);
             this.progressBar1.TabIndex = 8;
             this.progressBar1.Visible = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(646, 43);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.listBox1.Size = new System.Drawing.Size(263, 342);
+            this.listBox1.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelLoginName);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 115);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(165, 86);
+            this.panel1.TabIndex = 10;
+            this.panel1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Zalogowany jako";
+            this.label1.Visible = false;
+            // 
+            // labelLoginName
+            // 
+            this.labelLoginName.AutoSize = true;
+            this.labelLoginName.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLoginName.Location = new System.Drawing.Point(3, 27);
+            this.labelLoginName.Name = "labelLoginName";
+            this.labelLoginName.Size = new System.Drawing.Size(83, 33);
+            this.labelLoginName.TabIndex = 1;
+            this.labelLoginName.Text = "None";
+            this.labelLoginName.Visible = false;
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.Location = new System.Drawing.Point(12, 259);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(165, 23);
+            this.buttonLogin.TabIndex = 11;
+            this.buttonLogin.Text = "Zaloguj";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Location = new System.Drawing.Point(12, 207);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(165, 20);
+            this.textBoxLogin.TabIndex = 11;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(12, 233);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(165, 20);
+            this.textBoxPassword.TabIndex = 12;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // buttonLaunch
+            // 
+            this.buttonLaunch.Location = new System.Drawing.Point(12, 288);
+            this.buttonLaunch.Name = "buttonLaunch";
+            this.buttonLaunch.Size = new System.Drawing.Size(165, 97);
+            this.buttonLaunch.TabIndex = 13;
+            this.buttonLaunch.Text = "Launch MC";
+            this.buttonLaunch.UseVisualStyleBackColor = true;
+            this.buttonLaunch.Click += new System.EventHandler(this.buttonLaunch_Click);
             // 
             // Form1
             // 
@@ -152,6 +237,12 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = global::WPLauncher.Properties.Resources.bg_main;
             this.ClientSize = new System.Drawing.Size(921, 476);
+            this.Controls.Add(this.buttonLaunch);
+            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -171,6 +262,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +280,14 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.Label labelLoginName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonLaunch;
     }
 }
 

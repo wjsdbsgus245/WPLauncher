@@ -11,11 +11,13 @@ using ICSharpCode.SharpZipLib.Core;
 using System.IO;
 
 using System.Net;
+using MCLoginLib;
 
 namespace WPLauncher
 {
     public partial class Form1 : Form
     {
+        string[] MCSessionID;
         Point LastMousePos;
         public Form1()
         {
@@ -164,6 +166,22 @@ namespace WPLauncher
         {
             FastZip FZ = new FastZip();
             FZ.ExtractZip(SrcFile, "Klient", null);
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            MCSessionID = Login.generateSession(textBoxLogin.Text, textBoxPassword.Text, 13).Split(':');
+        }
+
+        private void buttonLaunch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Login.startMinecraft(true, 256, 1024, MCSessionID[2], MCSessionID[3], false, textBox1.Text);
+            }
+            catch
+            {
+            }
         }
 
     }
